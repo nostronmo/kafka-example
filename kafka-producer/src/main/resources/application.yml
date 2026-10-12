@@ -1,0 +1,47 @@
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 10s
+  kafka:
+    bootstrap-servers: localhost:9092
+  datasource: 
+    url: jdbc:h2:mem:testdb;
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false  
+#  profiles:
+#    active: test
+  application:
+    name: kafka-producer
+
+kafka:
+  enabled: true
+  config:
+    global:
+      retention-time: 3D
+      size: 256MB
+  topics:
+    stream:
+      book: ${KAFKA_STREAM_BOOK:book-data}
+
+server:
+  port: ${PRODUCER_PORT:8000}
+  shutdown: graceful
+  forward-headers-strategy: native
+
+logging:
+  level:
+    root: info
+    org:
+      apache:
+        kafka: error
+      springframework: warn
+      boot: error
+      data:
+        redis: debug
+  pattern:
+    console: '%n %d{HH:mm:ss} | %highlight(%-5level) | %cyan(%logger{30}) | %msg'

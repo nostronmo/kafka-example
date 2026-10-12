@@ -1,0 +1,15 @@
+[tools]
+maven = "latest"
+
+[env]
+_.file = ".env"
+
+[tasks.docker_run]
+alias = "dw"
+description = "Run Docker Compose Project"
+run = "docker compose up -d"
+
+[tasks.docker_stop]
+alias = "dt"
+description = "Stop Docker Compose Project"
+run = "docker compose down"
