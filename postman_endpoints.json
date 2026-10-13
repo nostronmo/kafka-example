@@ -1,0 +1,213 @@
+{
+  "info": {
+    "name": "kafka_sample",
+    "description": null,
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "kafka-producer",
+      "item": [
+        {
+          "name": "Send Random Book To Kafka",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{producerURL}}/v1/books/send",
+              "protocol": "",
+              "host": [
+                "{{producerURL}}"
+              ],
+              "path": [
+                "v1",
+                "books",
+                "send"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Generate Books with Random Name",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{producerURL}}/v1/books/generate/10000",
+              "protocol": "",
+              "host": [
+                "{{producerURL}}"
+              ],
+              "path": [
+                "v1",
+                "books",
+                "generate",
+                "10000"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Start Streaming data to Kafka",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{producerURL}}/v1/books/stream/start?speed=1000",
+              "protocol": "",
+              "host": [
+                "{{producerURL}}"
+              ],
+              "path": [
+                "v1",
+                "books",
+                "stream",
+                "start?speed=1000"
+              ],
+              "query": [
+                {
+                  "key": "speed",
+                  "value": "1000"
+                }
+              ],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Stop Streaming Data",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "description": "",
+            "url": {
+              "raw": "{{producerURL}}/v1/books/stream/stop",
+              "protocol": "",
+              "host": [
+                "{{producerURL}}"
+              ],
+              "path": [
+                "v1",
+                "books",
+                "stream",
+                "stop"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "kafka-consumer",
+      "item": []
+    },
+    {
+      "name": "Search All Books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "",
+        "url": {
+          "raw": "{{consumerURL}}/v1/books/search?page=0",
+          "protocol": "",
+          "host": [
+            "{{consumerURL}}"
+          ],
+          "path": [
+            "v1",
+            "books",
+            "search?page=0"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "0",
+              "description": "Search By Page"
+            },
+            {
+              "key": "title",
+              "value": "bookTitle",
+              "description": "Find Book Title"
+            },
+            {
+              "key": "author",
+              "value": "authorName",
+              "description": "Find Author Name"
+            }
+          ],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "Search Book By Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "",
+        "url": {
+          "raw": "{{consumerURL}}/v1/books/{{bookId}}",
+          "protocol": "",
+          "host": [
+            "{{consumerURL}}"
+          ],
+          "path": [
+            "v1",
+            "books",
+            "{{bookId}}"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "Delete Book",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "description": "",
+        "url": {
+          "raw": "{{consumerURL}}/v1/books/{{bookId}}",
+          "protocol": "",
+          "host": [
+            "{{consumerURL}}"
+          ],
+          "path": [
+            "v1",
+            "books",
+            "{{bookId}}"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "consumerURL",
+      "value": "http://localhost:8002",
+      "type": "default"
+    },
+    {
+      "key": "producerURL",
+      "value": "http://localhost:8001",
+      "type": "default"
+    },
+    {
+      "key": "bookId",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
