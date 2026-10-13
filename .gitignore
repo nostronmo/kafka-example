@@ -65,7 +65,7 @@ replay_pid*
 
 # Node
 **/node_modules/
-**/package-lock.json
+**/package-lock.
 **/yarn-error.log
 **/npm-debug.log
 **/.mvn/wrapper/maven-wrapper.jar
@@ -165,7 +165,6 @@ nbproject/private/
 **/*terraform.tfstate**
 **/*validate.md
 **/data
-**/*.json
 **/*.gz
 **/*app.log
 **/*keys
